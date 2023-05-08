@@ -44,9 +44,12 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/auth.store'
 import { ref } from 'vue'
-
+const authStore = useAuthStore()
 const agentCallsign = ref<string>('')
-const faction = ref<string>('COSMIC')
-async function register(): Promise<void> {}
+const faction = ref<'COSMIC' | 'VOID' | 'GALACTIC' | 'QUANTUM' | 'DOMINION'>('COSMIC')
+async function register(): Promise<void> {
+  await authStore.registerAgent(faction.value, agentCallsign.value)
+}
 </script>

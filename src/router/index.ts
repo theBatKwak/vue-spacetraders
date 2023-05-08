@@ -2,11 +2,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterSuccessView from '../views/RegisterSuccessView.vue'
+import DashboardView from '../views/DashboardView.vue'
 import { useAuthStore } from '@/stores/auth.store'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/',
+      name: 'dashboard',
+      component: DashboardView
+    },
     {
       path: '/register',
       name: 'register',

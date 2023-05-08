@@ -11,11 +11,11 @@
     >
       <h3 class="mb-4 text-center">Login</h3>
       <div class="flex flex-col mb-4">
-        <label for="callsign" class="uppercase text-sm ml-1">Agent Callsign</label>
+        <label for="callsign" class="uppercase text-sm ml-1">Agent Access Key</label>
         <input
           type="text"
           id="callsign"
-          v-model="agentCallsign"
+          v-model="agentAccessKey"
           class="px-3 py-2 bg-black/30 rounded focus:ring-emerald-500 focus:border-emerald-500 border-gray-700"
         />
       </div>
@@ -29,10 +29,13 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/auth.store'
 import { ref } from 'vue'
-const agentCallsign = ref<string>('')
+const agentAccessKey = ref<string>('')
+
+const authStore = useAuthStore()
 
 async function login(): Promise<void> {
-  console.log('login')
+  await authStore.loginAgent(agentAccessKey.value)
 }
 </script>

@@ -38,15 +38,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, watch } from 'vue'
 import { PhRocket, PhClipboard } from '@phosphor-icons/vue'
 import { useClipboard } from '@vueuse/core'
 import { toast } from 'vue3-toastify'
-
-const agentCallsign = ref<string>('BATKWAK')
-const agentHeadquarters = ref<string>('OE-PM-TR')
-const agentCredits = ref<number>(100000)
-const agentToken = ref<string>('abc123-abc123-abc123-abc123-abc123')
+import { useAuthStore } from '@/stores/auth.store'
+const authStore = useAuthStore()
+const agentCallsign = computed(() => authStore.agent?.symbol)
+const agentHeadquarters = computed(() => authStore.agent?.headquarters)
+const agentCredits = computed(() => authStore.agent?.credits)
+const agentToken = computed(() => authStore.agentToken || 'lostToken')
 const { copy, copied } = useClipboard()
 watch(copied, (value) => {
   if (value) {
