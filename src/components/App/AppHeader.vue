@@ -2,7 +2,7 @@
   <header v-if="!isLoggedIn">
     <p class="">Header</p>
   </header>
-  <header v-else class="border border-emerald-500 bg-emerald-500/10 backdrop-blur-md">
+  <header v-else class="border border-primary bg-primary/10 backdrop-blur-md">
     <AgentSummary v-if="agent" :agent="agent" />
   </header>
 </template>

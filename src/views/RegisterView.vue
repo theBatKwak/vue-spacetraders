@@ -16,7 +16,7 @@
           type="text"
           id="callsign"
           v-model="agentCallsign"
-          class="px-3 py-2 bg-black/30 rounded focus:ring-emerald-500 focus:border-emerald-500 border-gray-700"
+          class="px-3 py-2 bg-black/30 rounded focus:ring-primary focus:border-primary border-gray-700"
         />
       </div>
       <div class="flex flex-col mb-4">
@@ -25,7 +25,7 @@
           name=""
           id="faction"
           v-model="faction"
-          class="px-3 py-2 bg-black/30 rounded focus:ring-emerald-500 focus:border-emerald-500 border-gray-700"
+          class="px-3 py-2 bg-black/30 rounded focus:ring-primary focus:border-primary border-gray-700"
         >
           <option value="COSMIC">Cosmic</option>
           <option value="VOID">Void</option>
@@ -34,7 +34,7 @@
           <option value="DOMINION">Dominion</option>
         </select>
       </div>
-      <button type="submit" class="bg-emerald-500 px-3 py-2 rounded mt-2">Register</button>
+      <button type="submit" class="bg-primary px-3 py-2 rounded mt-2">Register</button>
     </form>
     <p>
       Already have an agent?

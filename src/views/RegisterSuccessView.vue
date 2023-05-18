@@ -29,7 +29,7 @@
       <p class="my-6 italic text-center font-light">Farewell and godspeed, {{ agentCallsign }}</p>
       <router-link
         to="/"
-        class="flex items-center justify-center text-white text-center bg-emerald-500 px-3 py-2 rounded mt-2 no-underline"
+        class="flex items-center justify-center text-white text-center bg-primary px-3 py-2 rounded mt-2 no-underline"
       >
         <ph-rocket size="2em" weight="duotone" class="mx-2" />Start carreer
       </router-link>

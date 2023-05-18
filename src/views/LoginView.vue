@@ -16,10 +16,10 @@
           type="text"
           id="callsign"
           v-model="agentAccessKey"
-          class="px-3 py-2 bg-black/30 rounded focus:ring-emerald-500 focus:border-emerald-500 border-gray-700"
+          class="px-3 py-2 bg-black/30 rounded focus:ring-primary focus:border-primary border-gray-700"
         />
       </div>
-      <button type="submit" class="bg-emerald-500 px-3 py-2 rounded mt-2">Login</button>
+      <button type="submit" class="bg-primary px-3 py-2 rounded mt-2">Login</button>
     </form>
     <p>
       Don't have an agent?
