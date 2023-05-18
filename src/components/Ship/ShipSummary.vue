@@ -8,6 +8,7 @@
     <div class="flex">
       <ShipRegistrationSummary :registration="props.ship.registration" />
       <ShipFlightModeSelector :flight-mode="props.ship.nav.flightMode" />
+      <ShipFuelIndicator :fuel="props.ship.fuel" />
     </div>
   </div>
 </template>
@@ -18,6 +19,7 @@ import { PhRocket } from '@phosphor-icons/vue'
 import type { Ship } from '@/models/ship.model'
 import ShipRegistrationSummary from './ShipRegistrationSummary.vue'
 import ShipFlightModeSelector from './ShipFlightModeSelector.vue'
+import ShipFuelIndicator from './ShipFuelIndicator.vue'
 
 const props = defineProps<{
   ship: Ship
