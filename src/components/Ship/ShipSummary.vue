@@ -5,7 +5,10 @@
         <ph-rocket size="1.5em" weight="duotone" class="mr-2" />{{ props.ship.symbol }}
       </p>
     </header>
-    <div class="flex"><ShipRegistrationSummary :registration="props.ship.registration" /></div>
+    <div class="flex">
+      <ShipRegistrationSummary :registration="props.ship.registration" />
+      <ShipFlightModeSelector :flight-mode="props.ship.nav.flightMode" />
+    </div>
   </div>
 </template>
 
@@ -14,6 +17,7 @@
 import { PhRocket } from '@phosphor-icons/vue'
 import type { Ship } from '@/models/ship.model'
 import ShipRegistrationSummary from './ShipRegistrationSummary.vue'
+import ShipFlightModeSelector from './ShipFlightModeSelector.vue'
 
 const props = defineProps<{
   ship: Ship
