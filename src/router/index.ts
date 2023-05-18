@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterSuccessView from '../views/RegisterSuccessView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import { useAuthStore } from '@/stores/auth.store'
+import { LocalDataService } from '@/services/localData.service'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -31,11 +32,16 @@ const router = createRouter({
   ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const publicPages = ['/login', '/register', '/register-success']
   const authStore = useAuthStore()
+  if (!authStore.isLoggedIn) {
+    const storedToken: string | undefined = LocalDataService.getLocalData()
+    if (storedToken) {
+      await authStore.loginAgent(storedToken)
+    }
+  }
   const authRequired = !publicPages.includes(to.path)
-
   if (authRequired && !authStore.isLoggedIn) {
     return next('/register')
   }

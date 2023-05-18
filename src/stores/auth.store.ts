@@ -8,6 +8,7 @@ import { toast } from 'vue3-toastify'
 import router from '@/router'
 import { LoginService } from '@/services/login.service'
 import { ShipsService } from '@/services/ships.service'
+import { LocalDataService } from '@/services/localData.service'
 
 export interface AuthState {
   agentToken: string | null
@@ -40,6 +41,7 @@ export const useAuthStore = defineStore('auth', {
         } = await RegisterService.registerAgent(faction, agentName)
         console.log(agentData)
         this.agentToken = agentData.token
+        LocalDataService.setLocalData(agentData.token)
         this.agent = agentData.agent
         this.contracts = [agentData.contract]
         this.faction = agentData.faction
@@ -55,6 +57,7 @@ export const useAuthStore = defineStore('auth', {
         const agentData: Agent = await LoginService.loginAgent(agentToken)
         const agentShips: Ship[] = await ShipsService.getShips(agentToken)
         this.agentToken = agentToken
+        LocalDataService.setLocalData(agentToken)
         this.ships = agentShips
         this.agent = agentData
         router.push('/')
