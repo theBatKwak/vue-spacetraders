@@ -1,4 +1,4 @@
-import type { FactionTrait } from './FactionTrait.model'
+import type { FactionTrait } from './factionTrait.model'
 
 export interface Faction {
   symbol: string
