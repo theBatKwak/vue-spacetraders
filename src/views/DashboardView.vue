@@ -1,7 +1,6 @@
 <template>
   <section>
     <pre>
-      {{ authStore.agent }}
       {{ authStore.ships }}
     </pre>
   </section>
