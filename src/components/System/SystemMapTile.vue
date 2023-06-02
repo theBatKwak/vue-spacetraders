@@ -14,5 +14,6 @@ import SystemMapWaypoint from './SystemMapWaypoint.vue'
 
 const props = defineProps<{
   systemWaypoints: SystemWaypoint[]
+  coordinates: number
 }>()
 </script>

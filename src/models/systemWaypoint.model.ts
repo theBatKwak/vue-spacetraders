@@ -5,4 +5,5 @@ export interface SystemWaypoint {
   type: WaypointType
   x: number
   y: number
+  tileIndex: number
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-2 w-2 m-0.5 bg-primary rounded-full" :class="waypointBg"></div>
+  <div class="h-2 w-2 m-0.5 rounded-full" :class="waypointBg"></div>
 </template>
 
 <script setup lang="ts">

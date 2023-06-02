@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       colors: {
         primary: 'rgb(16 185 129)'
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        20: 'repeat(20, minmax(0, 1fr))'
       }
     }
   },
