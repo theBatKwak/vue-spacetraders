@@ -1,5 +1,5 @@
 <template>
-  <div class="flex my-2">
+  <div class="flex">
     <button
       v-for="trait in traits"
       :key="trait.symbol"

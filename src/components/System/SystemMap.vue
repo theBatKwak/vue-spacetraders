@@ -1,11 +1,11 @@
 <template>
   <section class="p-4">
-    <header class="my-4">
-      <p class="text-xl">System map</p>
+    <header class="">
+      <h3 class="text-primary font-light">System map</h3>
     </header>
     <div
       v-if="systemData"
-      class="grid grid-cols-20 grid-rows-20 h-fit w-fit border border-primary/50 relative"
+      class="mt-4 grid grid-cols-20 grid-rows-20 h-fit w-fit border border-primary/50 relative"
     >
       <SystemMapCenter
         :type="systemData.type"

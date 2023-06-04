@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>Flight mode</p>
-    <InlineRadioSelector :choices="choices" :selected="props.flightMode" @changed="setFlightMode" />
+    <InlineRadioSelector :choices="choices" :selected="flightMode" @changed="setFlightMode" />
   </div>
 </template>
 
@@ -9,9 +9,14 @@
 import { ShipNavFlightMode } from '@/models/enums/shipNavFlightMode.enum'
 import InlineRadioSelector from '../Form/InlineRadioSelector.vue'
 import { ref } from 'vue'
+import { FlightModeService } from '@/services/flightMode.service'
 const props = defineProps<{
-  flightMode: ShipNavFlightMode
+  currentFlightMode: ShipNavFlightMode
+  shipSymbol: string
 }>()
+
+const flightMode = ref<ShipNavFlightMode>(props.currentFlightMode)
+
 const choices = ref<{ id: string; label: string }[]>([
   {
     id: ShipNavFlightMode.CRUISE,
@@ -32,6 +37,7 @@ const choices = ref<{ id: string; label: string }[]>([
 ])
 
 async function setFlightMode(mode: ShipNavFlightMode) {
-  console.log('Set flight mode : ', mode)
+  await FlightModeService.setFlightMode(props.shipSymbol, mode)
+  flightMode.value = mode
 }
 </script>

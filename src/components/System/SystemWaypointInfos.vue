@@ -14,9 +14,11 @@
         <p class="font-extralight">{{ waypointData.faction.symbol }}</p>
       </div>
     </div>
-    <div class="w-full flex flex-wrap items-center">
-      <SystemWaypointTraitsList :traits="waypointData.traits" />
+    <div class="w-full flex flex-wrap items-center mt-4">
+      <p class="w-full uppercase text-xs font-bold">Traits</p>
+      <SystemWaypointTraitsList :traits="waypointData.traits" class="" />
     </div>
+    <slot />
   </section>
 </template>
 

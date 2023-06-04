@@ -1,23 +1,41 @@
 <template>
-  <section class="border border-primary bg-primary/10 text-primary grid grid-cols-[auto_1fr]">
-    <Transition>
-      <SystemMap
-        v-if="systemData"
-        :system-data="systemData"
-        :ship-route="shipNavigation.route"
-        @selectTile="selectTile"
-        class="w-fit"
+  <section class="border border-primary bg-primary/10 text-primary">
+    <h2 class="text-center text-primary font-light my-4">Ship navigator</h2>
+    <div class="flex p-4">
+      <ShipDocker
+        :current-nav-status="shipNavigation.status"
+        :ship-symbol="shipSymbol"
+        class="mr-4"
       />
-    </Transition>
-    <Transition>
-      <ShipNavigatorActions
-        v-if="!!selectedTile"
-        :waypoints="selectedTileWaypoints || []"
-        :system-symbol="shipNavigation.systemSymbol"
-        @close-navigator-actions="selectedTile = null"
-        class="w-full max-w-md"
+      <ShipFlightModeSelector
+        :current-flight-mode="shipNavigation.flightMode"
+        :ship-symbol="shipSymbol"
+        class="mr-4"
       />
-    </Transition>
+      <ShipNavigationStatus :ship-nav="shipNavigation" />
+    </div>
+    <hr class="border-primary" />
+    <div class="grid grid-cols-[auto_1fr]">
+      <Transition>
+        <SystemMap
+          v-if="systemData"
+          :system-data="systemData"
+          :ship-route="shipNavigation.route"
+          @selectTile="selectTile"
+          class="w-fit"
+        />
+      </Transition>
+      <Transition>
+        <ShipNavigatorActions
+          v-if="!!selectedTile"
+          :waypoints="selectedTileWaypoints || []"
+          :system-symbol="shipNavigation.systemSymbol"
+          :ship-symbol="shipSymbol"
+          @close-navigator-actions="selectedTile = null"
+          class="w-full max-w-md"
+        />
+      </Transition>
+    </div>
   </section>
 </template>
 
@@ -30,9 +48,13 @@ import type { System } from '@/models/system.model'
 import { SystemsService } from '@/services/systems.service'
 import { MapService } from '@/services/map.service'
 import type { SystemWaypoint } from '@/models/systemWaypoint.model'
+import ShipDocker from './ShipDocker.vue'
+import ShipFlightModeSelector from './ShipFlightModeSelector.vue'
+import ShipNavigationStatus from './ShipNavigationStatus.vue'
 
 const props = defineProps<{
   shipNavigation: ShipNav
+  shipSymbol: string
 }>()
 
 const systemData = ref<System | null>(null)
@@ -57,7 +79,7 @@ loadSystemWaypoints(props.shipNavigation.systemSymbol)
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity 0.3s ease;
 }
 
 .v-enter-from,

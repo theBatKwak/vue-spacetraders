@@ -16,5 +16,6 @@
 </template>
 
 <script setup lang="ts">
+// @ts-ignore
 import { PhHeart, PhGithubLogo } from '@phosphor-icons/vue'
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-primary flex">
+  <div class="border border-primary flex w-fit">
     <div
       v-for="choice in choices"
       :key="choice.id"
@@ -25,13 +25,13 @@ const emit = defineEmits(['changed'])
 
 const props = defineProps<{
   choices: { id: string; label: string }[]
-  selected: string
+  selected?: string
 }>()
-const selectedButton = ref<string>(props.selected)
+const selectedButton = ref<string | undefined>(props.selected)
 
-watch(selectedButton, (newValue: string) => selectItem(newValue))
+watch(selectedButton, (newValue: string | undefined) => selectItem(newValue))
 
-function selectItem(choiceId: string): void {
+function selectItem(choiceId: string | undefined): void {
   emit('changed', choiceId)
 }
 </script>

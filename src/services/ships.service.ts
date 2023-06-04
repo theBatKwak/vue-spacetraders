@@ -8,4 +8,13 @@ export class ShipsService {
     })
     return data.data
   }
+  public static async getShip(shipSymbol: string, agentToken: string): Promise<Ship> {
+    const { data } = await axios.get<{ data: Ship }>(
+      `https://api.spacetraders.io/v2/my/ships/${shipSymbol}`,
+      {
+        headers: { Authorization: `Bearer ${agentToken}` }
+      }
+    )
+    return data.data
+  }
 }
