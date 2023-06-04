@@ -15,10 +15,17 @@
       :ship-symbol="ship.symbol"
       class="mt-4"
     />
+    <MarketSummary
+      v-if="selectedSubview === 'market'"
+      :system-symbol="ship.nav.systemSymbol"
+      :waypoint-symbol="ship.nav.waypointSymbol"
+      class="mt-4"
+    />
   </main>
 </template>
 <script setup lang="ts">
 import InlineRadioSelector from '@/components/Form/InlineRadioSelector.vue'
+import MarketSummary from '@/components/Market/MarketSummary.vue'
 import ShipNavigator from '@/components/Ship/ShipNavigator.vue'
 import type { Ship } from '@/models/ship.model'
 import { ShipsService } from '@/services/ships.service'
