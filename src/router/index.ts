@@ -5,6 +5,8 @@ import RegisterSuccessView from '../views/RegisterSuccessView.vue'
 import DashboardView from '../views/DashboardView.vue'
 import { useAuthStore } from '@/stores/auth.store'
 import { LocalDataService } from '@/services/localData.service'
+import FleetView from '@/views/FleetView.vue'
+import ContractsView from '@/views/ContractsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +30,16 @@ const router = createRouter({
       path: '/register-success',
       name: 'register-success',
       component: RegisterSuccessView
+    },
+    {
+      path: '/fleet',
+      name: 'fleet',
+      component: FleetView
+    },
+    {
+      path: '/contracts',
+      name: 'contracts',
+      component: ContractsView
     }
   ]
 })
