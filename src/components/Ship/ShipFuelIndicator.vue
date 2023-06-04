@@ -21,6 +21,6 @@ const props = defineProps<{
 }>()
 
 const fuelPercentage = computed<number>(() => {
-  return ((props.fuel.current - 100) / props.fuel.capacity) * 100
+  return (props.fuel.current / props.fuel.capacity) * 100
 })
 </script>

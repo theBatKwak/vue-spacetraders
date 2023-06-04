@@ -1,6 +1,18 @@
 import { WaypointType } from '@/models/enums/waypointType.enum'
+import type { Waypoint } from '@/models/waypoint.model'
+import axios from 'axios'
 
 export class SystemWaypointsService {
+  public static async getSystemWaypointData(
+    systemSymbol: string,
+    waypointSymbol: string
+  ): Promise<Waypoint> {
+    const { data: apiData } = await axios.get(
+      `https://api.spacetraders.io/v2/systems/${systemSymbol}/waypoints/${waypointSymbol}`
+    )
+    return apiData.data
+  }
+
   public static getWaypointBackgroundColor(waypointType: WaypointType): string {
     switch (waypointType) {
       case WaypointType.PLANET:
