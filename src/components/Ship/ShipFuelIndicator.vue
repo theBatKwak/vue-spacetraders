@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center h-fit">
+  <div class="flex items-center h-fit my-2">
     <ph-gas-can size="1.5em" weight="duotone" class="mr-2" />
     <div>
       <p class="text-xs font-light">{{ fuel.current }} / {{ fuel.capacity }}</p>

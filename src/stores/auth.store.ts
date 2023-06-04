@@ -60,8 +60,6 @@ export const useAuthStore = defineStore('auth', {
         LocalDataService.setLocalData(agentToken)
         this.ships = agentShips
         this.agent = agentData
-        router.push('/')
-        console.log(agentData)
       } catch (error) {
         console.error(error)
         toast.error('Error logging in agent.')
