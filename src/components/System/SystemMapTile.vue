@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex flex-wrap items-center justify-around hover:bg-primary/10 transition-all relative"
-    :class="{ 'ring-1 ring-primary': isShipDestination }"
+    :class="{ 'ring-1 ring-purple-800': isShipDestination, 'ring-1 ring-primary': isTileSelected }"
     @mouseenter="displayCurrentStopTooltip = true"
     @mouseleave="displayCurrentStopTooltip = false"
   >
@@ -31,6 +31,7 @@ const props = defineProps<{
   coordinates: number
   isShipDestination: boolean
   isShipDeparture: boolean
+  isTileSelected: boolean
 }>()
 
 const isShipCurrentStop = computed<boolean>(() => {

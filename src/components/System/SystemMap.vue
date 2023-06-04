@@ -13,7 +13,7 @@
       />
       <SystemMapTile
         v-for="(i, index) in 400"
-        @click="emit('selectTile', i)"
+        @click="selectTile(i)"
         :key="index"
         class="h-8 w-8 border-r border-b border-primary/20"
         :class="{ 'border-r-0': index % 20 === 19, 'border-b-0': index >= 390 }"
@@ -21,6 +21,7 @@
         :coordinates="i"
         :is-ship-departure="shipRouteDepartureTile === i"
         :is-ship-destination="shipRouteDestinationTile === i"
+        :is-tile-selected="selectedTile === i"
       />
     </div>
   </section>
@@ -29,7 +30,7 @@
 <script setup lang="ts">
 import type { System } from '@/models/system.model'
 import type { SystemWaypoint } from '@/models/systemWaypoint.model'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import SystemMapTile from './SystemMapTile.vue'
 import SystemMapCenter from './SystemMapCenter.vue'
 import type { ShipNavRoute } from '@/models/shipNavRoute.model'
@@ -47,6 +48,13 @@ function getWaypointsForIndex(index: number): SystemWaypoint[] {
     throw new Error('Waypoints are not defined')
   }
   return MapService.getSystemWaypointsForTileIndex(index, props.systemData.waypoints)
+}
+
+const selectedTile = ref<null | number>(null)
+
+function selectTile(index: number) {
+  selectedTile.value = index
+  emit('selectTile', index)
 }
 
 const shipRouteDepartureTile = computed<number>(() => {

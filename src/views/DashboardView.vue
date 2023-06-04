@@ -1,7 +1,7 @@
 <template>
   <section class="p-4">
     <div v-for="ship in authStore.ships" :key="ship.symbol">
-      <ShipSummary v-for="ship in authStore.ships" :key="ship.symbol" :ship="ship" />
+      <ShipSummary :ship="ship" />
       <ShipNavigator :ship-navigation="ship.nav" />
     </div>
     <pre>
