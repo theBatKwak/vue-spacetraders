@@ -7,7 +7,11 @@
         <TradeGoodList title="Exports" :goods="market.exports" />
       </div>
       <div>
-        <MarketTradeGoodList title="Buy / Sell" :goods="market.tradeGoods" />
+        <MarketTradeGoodList
+          title="Buy / Sell"
+          :goods="market.tradeGoods"
+          :ship-symbol="shipSymbol"
+        />
       </div>
     </div>
     <div>
@@ -27,11 +31,12 @@ import MarketTransactionsHistory from './MarketTransactionsHistory.vue'
 const props = defineProps<{
   systemSymbol: string
   waypointSymbol: string
+  shipSymbol: string
 }>()
 
 const market = ref<Market | null>(null)
 
-async function getMarket() {
+async function getMarket(): Promise<void> {
   market.value = await MarketService.getMarket(props.systemSymbol, props.waypointSymbol)
 }
 

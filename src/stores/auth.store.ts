@@ -67,6 +67,12 @@ export const useAuthStore = defineStore('auth', {
     }
   },
   getters: {
-    isLoggedIn: (state) => !!state.agentToken
+    isLoggedIn: (state): boolean => !!state.agentToken,
+    getShipCargo: (state) => (shipSymbol: string) => {
+      if (!state.ships) return undefined
+      const ship: Ship | undefined = state.ships.find((ship: Ship) => ship.symbol === shipSymbol)
+      if (!ship) return undefined
+      return ship.cargo
+    }
   }
 })

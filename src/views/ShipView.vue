@@ -19,6 +19,7 @@
       v-if="selectedSubview === 'market'"
       :system-symbol="ship.nav.systemSymbol"
       :waypoint-symbol="ship.nav.waypointSymbol"
+      :ship-symbol="ship.symbol"
       class="mt-4"
     />
   </main>
